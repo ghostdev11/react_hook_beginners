@@ -13,7 +13,16 @@ class MyComponents extends React.Component{
   handlerClick (event){
     console.log('>>> Hello ban from react');
     // console.log(event);
-    console.log('my name is ',this.state.name)
+    // console.log('age:', this.state.age)
+    this.setState(
+      {
+        name: 'eric',
+        age: (Math.floor(Math.random() * 100)+1)
+      }
+    )
+    // this.setState(
+    //   {age: Math.floor(Math.random() * 100)+1}
+    // )
   }
 
   handlerOnMoverOver(event){
@@ -28,7 +37,7 @@ class MyComponents extends React.Component{
       <div>
         my name is {this.state.name} and i'm from country {this.state.address}
         <button onMouseOver={this.handlerOnMoverOver}>Hold me</button>
-        <button onClick={this.handlerClick}>Click me</button>
+        <button onClick= { (event) =>  {this.handlerClick(Event)}}>Click me</button>
       </div>
       
     );
