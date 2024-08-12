@@ -1,5 +1,6 @@
 // class components
 // hook components  
+import { eventWrapper } from "@testing-library/user-event/dist/utils";
 import React from "react";
 class MyComponents extends React.Component{
   //.jsx
@@ -31,13 +32,32 @@ class MyComponents extends React.Component{
     console.log(event.pageX)
   }
 
+  handlerOnChangeInput = (event)=> {
+    // setState thuộc tính name của state{}.
+    this.setState(
+      {
+        name: event.target.value
+      }
+    )
+    // console.log(event, event.target.value)
+  }
+
+  handlerOnSubmit = (event)=> {
+    event.preventDefault();
+    console.log(this.state)
+  }
   render(){
     // .jsx
     return (
       <div>
         my name is {this.state.name} and i'm from country {this.state.address}
-        <button onMouseOver={this.handlerOnMoverOver}>Hold me</button>
-        <button onClick= { (event) =>  {this.handlerClick(Event)}}>Click me</button>
+        <form onSubmit={(event)=> this.handlerOnSubmit(event)}>
+          <input 
+          type="text"
+          onChange={(event) => this.handlerOnChangeInput(event)}
+          />
+          <button>Submit</button>
+        </form>
       </div>
       
     );
