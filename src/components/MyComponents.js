@@ -7,9 +7,9 @@ import DisplayInfor from "./DisplayInfor";
 class MyComponents extends React.Component{
   state = {
     listUsers : [
-      {id:1, name:'Diablo', age:33},
-      {id:2, name:'Eric', age:12},
-      {id:3, name:'Harry', age:23},
+      {id:1, name:'Diablo', age:'11'},
+      {id:2, name:'Eric', age:'17'},
+      {id:3, name:'Harry', age:'23'},
     ]
   }
 
