@@ -4,6 +4,7 @@ import { eventWrapper } from "@testing-library/user-event/dist/utils";
 import React from "react";
 import AddUserInfor from "./AddUserInfor";
 import DisplayInfor from "./DisplayInfor";
+import './DisplayInfor.scss';
 class MyComponents extends React.Component {
   state = {
     listUsers: [

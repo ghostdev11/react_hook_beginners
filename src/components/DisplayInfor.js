@@ -1,26 +1,28 @@
 import React from "react";
 
 class DisplayInfor extends React.Component {
-  state= {
+  state = {
     isShowListUser: true,
   };
   handlerShowHide = () => {
     this.setState({
-      isShowListUser: ! this.state.isShowListUser,
-    })
+      isShowListUser: !this.state.isShowListUser,
+    });
   };
   render() {
     const { listUsers } = this.props;
     // console.log(listUsers);
     return (
-      <div>
+      <div className="display-infor-container">
         <div>
           <span
             onClick={() => {
               this.handlerShowHide();
             }}
           >
-            {this.state.isShowListUser === true ? 'Hide listUser.' : 'Show listUser.'}
+            {this.state.isShowListUser === true
+              ? "Hide listUser."
+              : "Show listUser."}
           </span>
         </div>
         {this.state.isShowListUser && (
