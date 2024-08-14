@@ -1,10 +1,13 @@
 // class components
 // hook components
-import { eventWrapper } from "@testing-library/user-event/dist/utils";
+import {
+  eventWrapper,
+  isLabelWithInternallyDisabledControl,
+} from "@testing-library/user-event/dist/utils";
 import React from "react";
 import AddUserInfor from "./AddUserInfor";
 import DisplayInfor from "./DisplayInfor";
-import './DisplayInfor.scss';
+import "./DisplayInfor.scss";
 class MyComponents extends React.Component {
   state = {
     listUsers: [
@@ -15,17 +18,28 @@ class MyComponents extends React.Component {
   };
 
   handlerAddUser = (userObj) => {
-    console.log('>>>check data from parent:', userObj)
+   // console.log(">>>check data from parent:", userObj);
     this.setState({
-      listUsers: [userObj, ...this.state.listUsers]
-    })
+      listUsers: [userObj, ...this.state.listUsers],
+    });
   };
+
+  handlerDeleteUser = (userId)=> {
+    let listUserClone = [...this.state.listUsers];
+    listUserClone = listUserClone.filter((item) => item.id !== userId);
+    this.setState({
+      listUsers : listUserClone
+    })
+  }
   render() {
     return (
       <div>
         <AddUserInfor handlerAddUser={this.handlerAddUser} />
         <br /> <br />
-        <DisplayInfor listUsers={this.state.listUsers} />
+        <DisplayInfor
+          listUsers={this.state.listUsers}
+          handlerDeleteUser = {this.handlerDeleteUser}
+        />
       </div>
     );
   }

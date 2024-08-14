@@ -3,9 +3,9 @@ import MyComponents from "./MyComponents";
 
 class AddUserInfor extends React.Component {
   state = {
-    name: '',
+    name: "",
     age: 21,
-    address: '',
+    address: "",
   };
   handlerOnChangeInput = (event) => {
     // setState thuộc tính name của state{}.
@@ -24,16 +24,16 @@ class AddUserInfor extends React.Component {
     event.preventDefault();
     // console.log(this.state);
     this.props.handlerAddUser({
-      id: (Math.floor(Math.random() * 100) + 1 + '-random'),
+      id: Math.floor(Math.random() * 100) + 1 + "-random",
       name: this.state.name,
-      age: this.state.age
+      age: this.state.age,
     });
     // khi gọi hàm để thực thi thì có dấu () ngc lại than chiếu thì không có dấu ().
   };
   render() {
     return (
       <div>
-        my name is {this.state.name} and i'm from country {this.state.age}
+        my name is {this.state.name} and i'm {this.state.age} years old
         <form onSubmit={(event) => this.handlerOnSubmit(event)}>
           <label>Name: </label>
           <input
