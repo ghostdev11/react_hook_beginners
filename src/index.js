@@ -17,9 +17,10 @@ root.render(
       <Routes>
         {/*  đang code trang home page khi vào trang 
         -> render 2 button */}
-        <Route path="/" element={<App />} />
-        <Route path="users" element={<User />} />
-        <Route path="admins" element={<Admin />} />
+        <Route path="/" element={<App />}>
+          <Route path="users" element={<User />} />
+          <Route path="admins" element={<Admin />} />
+        </Route>
       </Routes>
     </BrowserRouter>
     {/* </React.StrictMode> */}
