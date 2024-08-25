@@ -12,10 +12,11 @@ body {
 
 .app-container {
   .header-container {
+    
     .navbar-nav {
       .nav-link {
         &.active {
-          color: red;
+          color: rgb(26, 179, 184);
         }
       }
     }
