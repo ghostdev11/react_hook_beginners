@@ -9,20 +9,100 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@media (min-width: 1400px) {
+
+  .container,
+  .container-lg,
+  .container-md,
+  e .container-sm,
+  .container-xl,
+  .container-xxl {
+    max-width: 1450px !important;
+  }
+}
 
 .app-container {
   .header-container {
-    
-    .navbar-nav {
-      .nav-link {
-        &.active {
-          color: rgb(26, 179, 184);
-        }
+    .btn-login {
+      margin-right: 15px;
+      border-radius: 5px;
+      border: 1px solid black;
+      padding: 0px 15px;
+      height: 40px;
+    }
+
+    .btn-signup {
+      margin-right: 15px;
+      border-radius: 5px;
+      border: 1px solid black;
+      padding: 0px 15px;
+      background-color: #2a2525;
+      color: white;
+      height: 40px;
+
+      &:hover {
+        background-color: black;
       }
     }
 
-    // .navbar-nav .nav-link.active{
-    //   color: red
-    // }
+    .navbar {
+      z-index: 5;
+      padding-top: 20px;
+
+      .navbar-nav {
+        .nav-link {
+          &.active {
+            color: rgb(26, 179, 184);
+          }
+        }
+      }
+    }
   }
+
+  .homepage-container {
+    .homepage-content {
+      position: relative;
+      padding: 150px 100px;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .homepage-content-title {
+      font-size: 67px;
+      font-weight: 600;
+    }
+
+    .homepage-content-text {
+      font-size: 20px;
+
+      p {
+        font-weight: 750;
+      }
+    }
+
+    .btn-getfree {
+      margin-right: 15px;
+      border-radius: 5px;
+      border: 1px solid black;
+      padding: 0px 15px;
+      background-color: #2a2525;
+      color: white;
+      height: 40px;
+
+      &:hover {
+        background-color: black;
+      }
+    }
+  }
+}
+
+video {
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
 }

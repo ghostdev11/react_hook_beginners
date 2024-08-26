@@ -5,7 +5,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { NavLink } from "react-router-dom";
 const Header = () => {
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar expan d="lg" className="bg-body-tertiary">
       <Container>
         {/* <Navbar.Brand href="#home">Dev noob</Navbar.Brand> */}
         <NavLink className="nav-link navbar-brand" to="/">
@@ -23,17 +23,16 @@ const Header = () => {
             <NavLink className="nav-link" to="/admins">
               Admin
             </NavLink>
-            {/* <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/users">User</Nav.Link>
-            <Nav.Link href="admins">Admin</Nav.Link> */}
           </Nav>
-          <nav>
-            <NavDropdown title="Setting" id="basic-nav-dropdown">
+          <Nav>
+            <button className="btn-login">Log in</button>
+            <button className="btn-signup">Sign Up</button>
+            {/* <NavDropdown title="Setting" id="basic-nav-dropdown">
               <NavDropdown.Item>Log-in</NavDropdown.Item>
               <NavDropdown.Item>Log-out</NavDropdown.Item>
               <NavDropdown.Item>Profile</NavDropdown.Item>
-            </NavDropdown>
-          </nav>
+            </NavDropdown> */}
+          </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
