@@ -20,7 +20,7 @@ import {
 import sidebarBg from "../../assets/bg2.jpg";
 import { FaReact } from "react-icons/fa";
 import { MdDashboard } from "react-icons/md";
-
+import { Link } from "react-router-dom";
 const SideBar = (props) => {
   const { image, collapsed, toggled, handleToggleSidebar } = props;
   return (
@@ -45,7 +45,7 @@ const SideBar = (props) => {
               whiteSpace: "nowrap",
             }}
           >
-            <FaReact size={'3em'} color= {"rgb(0, 255, 255)"}/>
+            <FaReact size={"3em"} color={"rgb(0, 255, 255)"} />
             Dev Noob
           </div>
         </SidebarHeader>
@@ -57,14 +57,15 @@ const SideBar = (props) => {
               suffix={<span className="badge red">new</span>}
             >
               Dashboard
+              <Link to="/admins" />
             </MenuItem>
           </Menu>
           <Menu iconShape="circle">
-            <SubMenu
-              icon={<FaGem />}
-              title= "Features"
-            >
-              <MenuItem>Quản lý Users</MenuItem>
+            <SubMenu icon={<FaGem />} title="Features">
+              <MenuItem>
+                Quản lý Users
+                <Link to="/admins/manager-user" />
+              </MenuItem>
               <MenuItem>Quản lý bài Quiz</MenuItem>
               <MenuItem>Quản lý Câu Hỏi</MenuItem>
             </SubMenu>

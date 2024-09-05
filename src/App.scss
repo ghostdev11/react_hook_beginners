@@ -85,11 +85,12 @@ body {
     .btn-getfree {
       margin-right: 15px;
       border-radius: 5px;
-      border: 1px solid black;
+      border: none;
       padding: 0px 15px;
       background-color: #2a2525;
       color: white;
       height: 40px;
+
 
       &:hover {
         background-color: black;
