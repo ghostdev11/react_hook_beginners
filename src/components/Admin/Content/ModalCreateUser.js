@@ -1,9 +1,11 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { FaPlus, FaSnowflake } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
 import axios from "axios";
-import { wait } from "@testing-library/user-event/dist/utils";
+// import { wait } from "@testing-library/user-event/dist/utils";
+import { toast } from "react-toastify";
+
 // import { FaPlus } from "react-icons";
 
 function ModalCreateUser(props) {
@@ -25,27 +27,26 @@ function ModalCreateUser(props) {
   const [previewimg, setPreviewimg] = useState("");
 
   const handleUpLoadImg = (event) => {
-    // điều kiện khi user upload file
+    // if khi user upload file
     if (event.target && event.target.files && event.target.files[0]) {
       setPreviewimg(URL.createObjectURL(event.target.files[0]));
       setImg(event.target.files[0]);
     }
-    // else {
-    //   // khi cancel thì file ảnh đã upload trước đó bị mất
-    //   setPreviewimg("");
-    // }
   };
 
   const handleSubmitData = async () => {
-    // call apis
-    // let data = {
-    //   email: email,
-    //   password: password,
-    //   username: username,
-    //   role: role,
-    //   userImage: img,
-    // };
-    // console.log(data);
+    // validate
+    const isValidateEmail = validateEmail(email);
+    if (!isValidateEmail) {
+      toast.error("Invalid Email");
+      return;
+    }
+    if (!password) {
+      toast.error("Invalid Password");
+      return;
+    }
+
+    // submit data
     const data = new FormData();
     data.append("email", email);
     data.append("password", password);
@@ -57,12 +58,27 @@ function ModalCreateUser(props) {
       "http://localhost:8081/api/v1/participant",
       data
     );
-    console.log("respond: ", respond);
+    console.log("respond: ", respond.data);
+
+    if (respond.data && respond.data.EC === 0) {
+      toast.success(respond.data.EM);
+      handleClose();
+    }
+    if (respond.data && respond.data.EC !== 0) {
+      toast.error(respond.data.EM);
+    }
+  };
+
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
   };
 
   return (
     <>
-
       <Modal
         show={show}
         onHide={handleClose}
@@ -129,11 +145,11 @@ function ModalCreateUser(props) {
             </div>
             <div className="col-md-12 img-preview">
               {previewimg ? (
+                // eslint-disable-next-line jsx-a11y/alt-text
                 <img src={previewimg} />
               ) : (
                 <span>Preview Image</span>
               )}
-
             </div>
           </form>
         </Modal.Body>
