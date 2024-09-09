@@ -2,6 +2,7 @@ import ModalCreateUser from "./ModalCreateUser";
 import "./ManagerUser.scss";
 import { FaPlus } from "react-icons/fa";
 import { useState } from "react";
+import TableUser from "./TableUser";
 const ManagerUser = () => {
   const [showCreatUser, setShowCreatUser] = useState(false);
 
@@ -21,7 +22,9 @@ const ManagerUser = () => {
             <FaPlus /> Add new users
           </button>
         </div>
-        <div className="table-user-content">table users</div>
+        <div className="table-user-content">
+          <TableUser />
+        </div>
         <ModalCreateUser
           show={showCreatUser}
           setShow={setShowCreatUser}
